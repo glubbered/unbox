@@ -111,3 +111,7 @@ This means you should clone your rails apps into `~/Sites` to work on them.
 
 Set the default HTTP forwarded port to `:3030` instead of `:3000`. This keeps `:3000` open for local web apps not run 
 in the VM.
+
+## Running a Rails App
+
+First, `vagrant ssh` then `cd ./Sites`. `git clone [rails app]` then `bundle`. Next `script/rails server`.
