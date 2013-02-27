@@ -114,4 +114,9 @@ in the VM.
 
 ## Running a Rails App
 
-First, `vagrant ssh` then `cd ./Sites`. `git clone [rails app]` then `bundle`. Next `script/rails server`.
+    vagrant ssh
+    cd ./Sites 
+    git clone [rails app]
+    bundle
+    rake db:setup
+    script/rails server
