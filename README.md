@@ -101,3 +101,13 @@ Finally, to completely wipe the virtual machine from the disk **destroying all i
     host $ vagrant destroy # DANGER: all is gone
 
 Please check the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html) for more information on Vagrant.
+
+## Customizations By Chris
+
+Added a default shared path pointing to `~/Sites` on the host and `/home/vagrant/Sites` on the guest. `~/Sites` used 
+to be standard in OS X pre-Mountain Lion; now it's back. If the directory doesn't exist, Vagrant will create it.
+
+This means you should clone your rails apps into `~/Sites` to work on them.
+
+Set the default HTTP forwarded port to `:3030` instead of `:3000`. This keeps `:3000` open for local web apps not run 
+in the VM.
