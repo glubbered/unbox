@@ -111,6 +111,11 @@ package { ['libxml2', 'libxml2-dev', 'libxslt1-dev']:
   ensure => installed
 }
 
+# So Psych and Typhoeus can be installed properly
+package { ['libcurl4-gnutls-dev', 'libyaml-dev']:
+  ensure => installed
+}
+
 # ExecJS runtime.
 package { 'nodejs':
   ensure => installed
@@ -124,18 +129,24 @@ exec { 'install_rvm':
   require => Package['curl']
 }
 
-exec { 'install_ruby':
+exec { 'install_latest_ruby':
   # We run the rvm executable directly because the shell function assumes an
   # interactive environment, in particular to display messages or ask questions.
   # The rvm executable is more suitable for automated installs.
   #
   # Thanks to @mpapis for this tip.
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 1.9.3 --latest-binary && rvm --fuzzy alias create default 1.9.3'",
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 1.9.3 --latest-binary && rvm alias create latest 1.9.3'",
+  creates => "${home}/.rvm/bin/ruby-latest",
+  require => Exec['install_rvm']
+}
+
+exec { 'install_production_ruby':
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 1.9.3-p194 && rvm alias create default 1.9.3-p194'",
   creates => "${home}/.rvm/bin/ruby",
   require => Exec['install_rvm']
 }
 
 exec { "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'":
   creates => "${home}/.rvm/bin/bundle",
-  require => Exec['install_ruby']
+  require => Exec['install_production_ruby']
 }
