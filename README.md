@@ -122,4 +122,5 @@ in the VM.
 Comment out `socket:` in database.yml for both `development` and `test`. The VM config will handle the location of mysql.sock.
     
     rake db:schema:load
+    rake db:seed
     script/rails server
