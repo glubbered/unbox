@@ -118,5 +118,8 @@ in the VM.
     cd ./Sites 
     git clone [rails app]
     bundle
-    rake db:setup
+    
+Comment out `socket:` in database.yml for both `development` and `test`. The VM config will handle the location of mysql.sock.
+    
+    rake db:schema:load
     script/rails server
