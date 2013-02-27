@@ -98,6 +98,10 @@ package { 'curl':
   ensure => installed
 }
 
+package { 'lynx-cur':
+  ensure => installed
+}
+
 package { 'build-essential':
   ensure => installed
 }
