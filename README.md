@@ -57,19 +57,6 @@ The recommended workflow is
 
 * test within the virtual machine.
 
-Just clone your Rails fork in the very directory of the Rails development box in the host computer:
-
-    host $ ls
-    README.md   Vagrantfile puppet
-    host $ git clone git@github.com:<your username>/rails.git
-
-Vagrant mounts that very directory as _/vagrant_ within the virtual machine:
-
-    vagrant@rails-dev-box:~$ ls /vagrant
-    puppet  rails  README.md  Vagrantfile
-
-so we are ready to go to edit in the host, and test in the virtual machine.
-
 This workflow is convenient because in the host computer you normally have your editor of choice fine-tuned, Git configured, and SSH keys in place.
 
 ## Virtual Machine Management
@@ -117,6 +104,7 @@ in the VM.
     vagrant ssh
     cd ./Sites 
     git clone [rails app]
+    cp database_sample.yml database.yml
     bundle
     
 Comment out `socket:` in database.yml for both `development` and `test`. The VM config will handle the location of mysql.sock.
