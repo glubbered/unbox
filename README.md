@@ -102,7 +102,7 @@ Finally, to completely wipe the virtual machine from the disk **destroying all i
 
 Please check the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html) for more information on Vagrant.
 
-## Customizations By Chris
+## Customizations By Unbounce
 
 Added a default shared path pointing to `~/Sites` on the host and `/home/vagrant/Sites` on the guest. `~/Sites` used 
 to be standard in OS X pre-Mountain Lion; now it's back. If the directory doesn't exist, Vagrant will create it.
